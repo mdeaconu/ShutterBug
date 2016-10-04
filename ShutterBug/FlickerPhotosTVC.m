@@ -92,8 +92,20 @@
 }
 */
 
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id detail = self.splitViewController.viewControllers[1];
+    if ([detail isKindOfClass:[ImageViewController class]]) {
+        [self prepareImageViewController:detail
+                          toDisplayPhoto:self.photos[indexPath.row]];
+    }
+#warning video 1:17:50
+}
 
 #pragma mark - Navigation
+
 - (void)prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(NSDictionary *)photo
 {
     ivc.imageURL = [FlickrFetcher URLforPhoto:photo
@@ -117,6 +129,5 @@
     }
     
 }
-
 
 @end
