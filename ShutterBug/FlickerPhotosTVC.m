@@ -8,6 +8,7 @@
 
 #import "FlickerPhotosTVC.h"
 #import "FlickrFetcher.h"
+#import "ImageViewController.h"
 
 @interface FlickerPhotosTVC ()
 
@@ -32,8 +33,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -55,7 +54,7 @@
     NSDictionary *photo = self.photos[indexPath.row];
     cell.textLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
     cell.detailTextLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    
+
     return cell;
 }
 
@@ -93,14 +92,31 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
+- (void)prepareImageViewController:(ImageViewController *)ivc toDisplayPhoto:(NSDictionary *)photo
+{
+    ivc.imageURL = [FlickrFetcher URLforPhoto:photo
+                                       format:FlickrPhotoFormatLarge];
+    ivc.title = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        if (indexPath) {
+            if ([segue.identifier isEqualToString:@"Display Photo"]) {
+                if ([segue.destinationViewController isKindOfClass:[ImageViewController class]]) {
+                    [self prepareImageViewController:segue.destinationViewController
+                                      toDisplayPhoto:self.photos[indexPath.row]];
+                }
+            }
+        }
+    }
+    
 }
-*/
+
 
 @end
