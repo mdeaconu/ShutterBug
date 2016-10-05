@@ -17,7 +17,7 @@
 		3C9162FD1DA2EAD6003957BF /* JustPostedFlickerPhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9162FC1DA2EAD6003957BF /* JustPostedFlickerPhotosTVC.m */; };
 		3C9163071DA2EFBB003957BF /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C9163061DA2EFBB003957BF /* FlickrFetcher.m */; };
 		3CDF90031DA42976002AE1FB /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CDF90021DA42976002AE1FB /* ImageViewController.m */; };
-		3CDF90071DA44765002AE1FB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CDF90061DA44765002AE1FB /* Main_iPad.storyboard */; };
+		3CE1745A1DA57BA3006DF6E2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CE174581DA57BA3006DF6E2 /* Main_iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 		3C9163061DA2EFBB003957BF /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
 		3CDF90011DA42976002AE1FB /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		3CDF90021DA42976002AE1FB /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
-		3CDF90061DA44765002AE1FB /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main_iPad.storyboard; path = ../Main_iPad.storyboard; sourceTree = "<group>"; };
+		3CE174591DA57BA3006DF6E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				3C9162F81DA2E9EB003957BF /* FlickerPhotosTVC.h */,
 				3C9162F91DA2E9EB003957BF /* FlickerPhotosTVC.m */,
 				3C9162E71DA2E678003957BF /* Main_iPhone.storyboard */,
-				3CDF90061DA44765002AE1FB /* Main_iPad.storyboard */,
+				3CE174581DA57BA3006DF6E2 /* Main_iPad.storyboard */,
 				3C9162FB1DA2EAD6003957BF /* JustPostedFlickerPhotosTVC.h */,
 				3C9162FC1DA2EAD6003957BF /* JustPostedFlickerPhotosTVC.m */,
 				3C9162E41DA2E678003957BF /* ViewController.h */,
@@ -171,7 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C9162EE1DA2E678003957BF /* LaunchScreen.storyboard in Resources */,
-				3CDF90071DA44765002AE1FB /* Main_iPad.storyboard in Resources */,
+				3CE1745A1DA57BA3006DF6E2 /* Main_iPad.storyboard in Resources */,
 				3C9162EB1DA2E678003957BF /* Assets.xcassets in Resources */,
 				3C9162E91DA2E678003957BF /* Main_iPhone.storyboard in Resources */,
 			);
@@ -211,6 +211,14 @@
 				3C9162ED1DA2E678003957BF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3CE174581DA57BA3006DF6E2 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3CE174591DA57BA3006DF6E2 /* Base */,
+			);
+			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
