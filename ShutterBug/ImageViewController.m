@@ -8,7 +8,7 @@
 
 #import "ImageViewController.h"
 
-@interface ImageViewController () <UIScrollViewDelegate>
+@interface ImageViewController () <UIScrollViewDelegate, UISplitViewControllerDelegate>
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -73,7 +73,9 @@
 
 - (void)setImage:(UIImage *)image
 {
+    self.scrollView.zoomScale = 1.0;
     self.imageView.image = image;
+    self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
     [self.imageView sizeToFit];
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
     [self.spinner stopAnimating];
@@ -84,4 +86,44 @@
     [super viewDidLoad];
     [self.scrollView addSubview:self.imageView];
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.splitViewController.displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [self showMenuButton:self.splitViewController];
+    }
+}
+
+- (void)showMenuButton:(UISplitViewController *)svc
+{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Show"
+                                                                             style:svc.displayModeButtonItem.style
+                                                                            target:svc.displayModeButtonItem.target
+                                                                            action:svc.displayModeButtonItem.action];
+}
+
+#pragma mark - UISplitViewControllerDelegate
+
+- (void)awakeFromNib
+{
+    self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController
+  ontoPrimaryViewController:(UIViewController *)primaryViewController
+{
+    return YES;
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode
+{
+    if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [self showMenuButton:svc];
+    }else{
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
+
 @end

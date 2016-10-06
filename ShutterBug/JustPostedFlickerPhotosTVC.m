@@ -23,12 +23,17 @@
 - (void)fetchPhotos
 {
     NSURL *url = [FlickrFetcher URLforRecentGeoreferencedPhotos];
-    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-    NSDictionary *propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults
-                                                                        options:0
-                                                                          error:NULL];
-    NSArray *photos = [propertyListResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
-    self.photos = photos;
+    dispatch_queue_t fetchQ = dispatch_queue_create("flicker fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+        NSDictionary *propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults
+                                                                            options:0
+                                                                              error:NULL];
+        NSArray *photos = [propertyListResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.photos = photos;
+        });
+    });
 }
 
 /*

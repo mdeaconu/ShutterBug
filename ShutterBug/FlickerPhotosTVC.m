@@ -63,11 +63,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id detail = self.splitViewController.viewControllers[1];
+    if ([detail isKindOfClass:[UINavigationController class]]) {
+        detail = [((UINavigationController *)detail).viewControllers firstObject];
+    }
     if ([detail isKindOfClass:[ImageViewController class]]) {
         [self prepareImageViewController:detail
                           toDisplayPhoto:self.photos[indexPath.row]];
     }
-#warning video 1:17:50
 }
 
 #pragma mark - Navigation
