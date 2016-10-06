@@ -20,8 +20,9 @@
     [self fetchPhotos];
 }
 
-- (void)fetchPhotos
+- (IBAction)fetchPhotos
 {
+    [self.refreshControl beginRefreshing];
     NSURL *url = [FlickrFetcher URLforRecentGeoreferencedPhotos];
     dispatch_queue_t fetchQ = dispatch_queue_create("flicker fetcher", NULL);
     dispatch_async(fetchQ, ^{
@@ -31,19 +32,10 @@
                                                                               error:NULL];
         NSArray *photos = [propertyListResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.refreshControl endRefreshing];
             self.photos = photos;
         });
     });
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

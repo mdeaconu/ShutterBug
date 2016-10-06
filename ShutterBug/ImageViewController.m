@@ -98,7 +98,7 @@
 
 - (void)showMenuButton:(UISplitViewController *)svc
 {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Show"
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ShutterBug"
                                                                              style:svc.displayModeButtonItem.style
                                                                             target:svc.displayModeButtonItem.target
                                                                             action:svc.displayModeButtonItem.action];
