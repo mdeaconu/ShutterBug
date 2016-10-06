@@ -64,6 +64,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ShutterBug" id="s28-UG-0YW"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="eqU-aE-K02">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="fetchPhotos" destination="AYQ-g2-XjS" eventType="valueChanged" id="ZiP-sm-Wmq"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcH-DR-PmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,7 +87,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zNY-PY-f3m">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="zNY-PY-f3m">
                                 <rect key="frame" x="280" y="280" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="0l0-ut-8el"/>
@@ -110,7 +116,7 @@
                             <constraint firstItem="zNY-PY-f3m" firstAttribute="centerX" secondItem="SlI-ly-kPi" secondAttribute="centerX" id="bgU-X8-OYW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ShutterBug" id="ogI-TS-vOx"/>
+                    <navigationItem key="navigationItem" id="ogI-TS-vOx"/>
                     <connections>
                         <outlet property="scrollView" destination="lby-NU-yVO" id="LZ9-pm-fHC"/>
                         <outlet property="spinner" destination="zNY-PY-f3m" id="BUr-67-MLy"/>
